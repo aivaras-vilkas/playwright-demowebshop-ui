@@ -16,6 +16,7 @@ GitHub Actions CI/CD with snapshot updates and test execution<br>
 HTML test reports automatically uploaded as artifacts<br>
 Cross‑browser support (Chromium, Firefox, WebKit)<br>
 Visual regression testing via Playwright snapshots<br>
+Allure reporting added: https://aivaras-vilkas.github.io/playwright-demowebshop-ui/
 
 **Project Structure:**
 ```
