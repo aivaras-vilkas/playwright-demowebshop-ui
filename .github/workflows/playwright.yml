@@ -51,7 +51,7 @@ jobs:
   test:
     # needs: update-snapshots # Uncomment if snapshot updates enabled
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     env:
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: chromium
