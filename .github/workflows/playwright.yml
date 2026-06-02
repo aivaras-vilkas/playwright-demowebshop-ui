@@ -29,8 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      # Removed browser install here — not needed when snapshots are disabled
+      # - name: Install Playwright Browsers
+      #   run: npx playwright install --with-deps
 
       - name: Configure Git for pushing
         run: |
@@ -71,6 +72,13 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
+
+      # Cache Playwright browsers to speed up subsequent runs. The cache key includes the hash of package-lock.json
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
         run: npm ci
