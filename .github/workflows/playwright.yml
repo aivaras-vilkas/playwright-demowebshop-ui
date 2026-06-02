@@ -13,7 +13,7 @@ on:
 
 jobs:
   update-snapshots:
-    if: false # Disable snapshot updates for now. Change false to true to enable and uncomment test:needs below.
+    if: false # Disable snapshot updates for now. Change to true to enable.
     runs-on: ubuntu-latest
 
     env:
@@ -29,9 +29,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Removed browser install here — not needed when snapshots are disabled
-      # - name: Install Playwright Browsers
-      #   run: npx playwright install --with-deps
+      # Chromium skipped, so no browser install here
 
       - name: Configure Git for pushing
         run: |
@@ -51,11 +49,12 @@ jobs:
           git push
 
   test:
-    # needs: update-snapshots # Uncomment this line to enable snapshot updates.
+    # needs: update-snapshots # Uncomment if snapshot updates enabled
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
     env:
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: chromium
       TESTING_PAGE: ${{ secrets.TESTING_PAGE }}
 
     steps:
@@ -73,7 +72,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
-      # Cache Playwright browsers to speed up subsequent runs. The cache key includes the hash of package-lock.json
       - name: Cache Playwright Browsers
         uses: actions/cache@v4
         with:
@@ -83,8 +81,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # ⭐ Install only Firefox + WebKit (Chromium skipped)
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install firefox webkit
 
       - name: Run Playwright tests
         run: npx playwright test
