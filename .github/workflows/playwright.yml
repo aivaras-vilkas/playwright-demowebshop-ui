@@ -83,7 +83,7 @@ jobs:
 
       # Install only Firefox + WebKit (Chromium skipped)
       - name: Install Playwright Browsers
-        run: npx playwright install firefox webkit
+        run: npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: npx playwright test
