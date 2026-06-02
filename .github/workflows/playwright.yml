@@ -13,6 +13,7 @@ on:
 
 jobs:
   update-snapshots:
+    if: false # Disable snapshot updates for now. Change false to true to enable.
     runs-on: ubuntu-latest
 
     env:
