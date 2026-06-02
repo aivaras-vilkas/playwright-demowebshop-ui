@@ -13,7 +13,7 @@ on:
 
 jobs:
   update-snapshots:
-    if: false # Disable snapshot updates for now. Change false to true to enable.
+    if: false # Disable snapshot updates for now. Change false to true to enable and uncomment test:needs below.
     runs-on: ubuntu-latest
 
     env:
@@ -50,7 +50,7 @@ jobs:
           git push
 
   test:
-    needs: update-snapshots
+    # needs: update-snapshots # Uncomment this line to enable snapshot updates.
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
