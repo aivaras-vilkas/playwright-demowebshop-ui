@@ -7,7 +7,10 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('Check if main page loads', async ({ page }, testInfo) => {
-  testInfo.annotations.push({type: 'label', description: 'severity:blocker'
+  testInfo.attachments.push({
+    name: "severity",
+    body: Buffer.from("blocker"),
+    contentType: "text/plain"
   });
 
   const main = new MainPage(page);
