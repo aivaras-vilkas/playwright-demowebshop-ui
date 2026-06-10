@@ -7,9 +7,14 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('Check if main page loads', async ({ page }) => {
+  test.info().annotations.push(
+    { type: 'severity', description: 'normal' },
+    { type: 'feature', description: 'Main Page' },
+    { type: 'story', description: 'User opens homepage and sees main content' }
+  );
+
   const main = new MainPage(page);
   await main.goToHomepage();
-
   await main.expectMainPageLoaded();
 });
 
