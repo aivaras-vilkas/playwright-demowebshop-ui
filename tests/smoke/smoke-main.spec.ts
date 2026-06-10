@@ -6,13 +6,7 @@ test.beforeEach(async ({ page }) => {
   await page.context().clearPermissions();
 })
 
-test('Check if main page loads', async ({ page }, testInfo) => {
-  testInfo.attachments.push({
-    name: "severity",
-    body: Buffer.from("blocker"),
-    contentType: "text/plain"
-  });
-
+test('Check if main page loads', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
@@ -20,36 +14,28 @@ test('Check if main page loads', async ({ page }, testInfo) => {
 });
 
 test.describe('Header links navigation tests', () => {
-test('Check if register link works', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Check if register link works', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToRegisterLink();
 });
 
-test('Check if login link works', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Check if login link works', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToLogInLink();
 });
 
-test('Check if shopping cart link works', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Check if shopping cart link works', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToShoppingCart();
 });
 
-test('Check if wishlist link works', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Check if wishlist link works', async ({ page }) => {  
   const main = new MainPage(page);
   await main.goToHomepage();
 
@@ -57,9 +43,7 @@ test('Check if wishlist link works', async ({ page }, testInfo) => {
 });
 });
 
-  test('Search works', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+  test('Search works', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
@@ -69,63 +53,49 @@ test('Check if wishlist link works', async ({ page }, testInfo) => {
 });
 
 test.describe('Top menu navigation tests', () => {
-  test('Books top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+  test('Books top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToTopMenuBooks();
 });
 
-test('Computers top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Computers top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToTopMenuComputers();
 });
 
-test('Electronics top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Electronics top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToTopMenuElectronics();
 });
 
-test('Apparel & Shoes top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Apparel & Shoes top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToTopMenuApparelShoes();
 });
 
-test('Digital Downloads top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Digital Downloads top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToTopMenuDigitalDownloads();
 });
 
-test('Jewelry top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Jewelry top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToTopMenuJewelry();
 });
 
-test('Gift Cards top menu navigation', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Gift Cards top menu navigation', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
@@ -133,18 +103,14 @@ test('Gift Cards top menu navigation', async ({ page }, testInfo) => {
 });
 });
 
-test('Manufacturer - Tricentis link', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Manufacturer - Tricentis link', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
   await main.goToManufacturerTricentis();
 });
 
-test('Product grid loaded', async ({ page }, testInfo) => {
-  testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Product grid loaded', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
@@ -152,97 +118,73 @@ test('Product grid loaded', async ({ page }, testInfo) => {
 });
 
 test.describe('Footer information links tests', () => {
-test('Sitemap link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Sitemap link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerInformationSitemapWorks();
 });
 
-test('Shipping & returns link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Shipping & returns link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerInformationShippingReturnWorks();
 });
 
-test('Privacy notice link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Privacy notice link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerInformationPrivacyNoticeWorks();
 });
 
-test('Conditions of use link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Conditions of use link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerInformationConditionsOfUseWorks();
 });
 
-test('About us link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('About us link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerInformationAboutUsWorks();
 });
 
-test('Contact us link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Contact us link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerInformationContactUsWorks();
 });
 
-test('Customer service search link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Customer service search link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerCustomerServiceSearchWorks();
 });
 
-test('Customer service news link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Customer service news link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerCustomerServiceNewsWorks();
 });
 
-test('Customer service blog link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Customer service blog link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerCustomerServiceBlogWorks();
 });
 
-test('Customer service recently viewed products link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Customer service recently viewed products link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerCustomerServiceRecentlyViewedProductsWorks();
 });
 
-test('Customer service compare products list link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Customer service compare products list link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerCustomerServiceCompareProductsListWorks();
 });
 
-test('Customer service new products link works', async ({ page }, testInfo) => {
-    testInfo.annotations.push({ type: 'label', description: 'severity:blocker' });
-
+test('Customer service new products link works', async ({ page }) => {
     const main = new MainPage(page);
     await main.goToHomepage();
     await main.footerCustomerServiceNewProductsWorks();
