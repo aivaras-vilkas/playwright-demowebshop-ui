@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
   await page.context().clearPermissions();
 });
 
-test('Main page screenshot comparison', async ({ page }) => {
+test('Main page screenshot comparison @screenshot', async ({ page }) => {
   const main = new MainPage(page);
   await main.goToHomepage();
 
