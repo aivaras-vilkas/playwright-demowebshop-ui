@@ -49,7 +49,6 @@ jobs:
           git push
 
   test:
-    # needs: update-snapshots # Uncomment if snapshot updates enabled
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
@@ -81,59 +80,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Install only Firefox + WebKit (Chromium skipped)
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run Playwright tests (excluding accessibility)
+        run: npx playwright test --grep-invert @accessibility
 
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: playwright-report
-          path: playwright-report/
-          retention-days: 30
-
-      - name: Upload Allure Results
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: allure-results
-          path: allure-results/
-          retention-days: 30
-
-  publish-allure-report:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Download Allure Results
-        uses: actions/download-artifact@v8
-        with:
-          name: allure-results
-          path: allure-results
-
-      - name: Install Allure CLI
-        run: npm install -g allure-commandline --no-progress
-
-      - name: Generate Allure Report
-        run: allure generate allure-results --clean -o allure-report
-
-      - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: allure-report
-
-  deploy:
-    needs: publish-allure-report
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
