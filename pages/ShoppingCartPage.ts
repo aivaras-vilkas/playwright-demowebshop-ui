@@ -59,6 +59,13 @@ export class ShoppingCartPage {
 }
 
   async checkIfProductPriceCalculatedCorrectly(nthProduct: number) {
+    // Wait for animation/recalculation to complete
+    await this.page.waitForTimeout(800);
+    
+    // Ensure elements are stable before reading
+    await this.productUnitPrice.nth(nthProduct).waitFor({ state: 'visible' });
+    await this.productTotalPrice.nth(nthProduct).waitFor({ state: 'visible' });
+    
     const unitPriceText = await this.productUnitPrice.nth(nthProduct).innerText();
     const totalPriceText = await this.productTotalPrice.nth(nthProduct).innerText();
     const quantityValue = await this.cartItemQuantityInput.nth(nthProduct).inputValue();
@@ -73,6 +80,9 @@ export class ShoppingCartPage {
   async updateQuantityAndCheck(rowIndex: number, quantity: number) {
     await this.cartItemQuantityInput.nth(rowIndex).fill(quantity.toString());
     await this.updateShoppingCartButton.click();
+    
+    // Wait for cart update request to complete
+    await this.page.waitForLoadState('networkidle');
     await this.checkIfProductPriceCalculatedCorrectly(rowIndex);
 }
 }
