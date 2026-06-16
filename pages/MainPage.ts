@@ -273,12 +273,28 @@ export class MainPage {
   async enterSearchTerm(term:string) {  
     await this.searchInputField.fill(term);
     await this.searchButton.click();
+    // Wait for search results page to load
+    await this.page.waitForURL(/search\?q=/);
   }
 
   async searchResultsContain(term: string) {
-    const results = this.searchResultsText;
+    // Use a more aggressive wait strategy for search results
+    await this.page.waitForLoadState('domcontentloaded');
+    
+    // Wait for product grid to be rendered - use waitForFunction as fallback
+    try {
+      await this.page.waitForFunction(() => {
+        const results = document.querySelectorAll('.product-grid h2 a[href]');
+        return results.length > 0;
+      }, { timeout: 15000 });
+    } catch {
+      // If waitForFunction fails, add extra time and retry locator
+      await this.page.waitForTimeout(2000);
+    }
 
+    const results = this.searchResultsText;
     const count = await results.count();
+    
     expect(count).toBeGreaterThan(0);
 
     const searchResultsCount = await results.count();
