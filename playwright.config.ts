@@ -9,10 +9,12 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+  timeout: process.env.CI ? 60000 : 30000,
+  expect: { timeout: 10000 },
   reporter: [
-  ['allure-playwright'],
-  ['html']
-],
+    ['allure-playwright'],
+    ['html']
+  ],
 
   use: {
     baseURL: process.env.TESTING_PAGE,
@@ -20,7 +22,9 @@ export default defineConfig({
     trace: 'on-first-retry',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    viewport: { width: 1280, height: 720 }
+    viewport: { width: 1280, height: 720 },
+    navigationTimeout: 60000,
+    actionTimeout: 20000,
   },
 
   projects: [
