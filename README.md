@@ -21,38 +21,53 @@ Allure reporting added: https://aivaras-vilkas.github.io/playwright-demowebshop-
 
 **Project Structure:**
 ```
-demo_webshot_test/
-├── .github/
-│   └── workflows/
-│       └── playwright.yml
-├── playwright.config.ts
-├── package.json
-├── package-lock.json
-├── README.md
+playwright-demowebshop-ui/
 │
 ├── tests/
-│   ├── specs/
-│   │   ├── homepage.spec.ts
+│   ├── e2e/
 │   │   ├── login.spec.ts
-│   │   ├── cart.spec.ts
-│   │   └── example.spec.ts
-│   │
-│   ├── pages/
-│   │   ├── MainPage.ts
-│   │   ├── LoginPage.ts
-│   │   ├── CartPage.ts
-│   │   └── BasePage.ts
-│   │
-│   ├── fixtures/
-│   │   └── test-fixtures.ts
-│   │
-│   └── helpers/
-│       ├── test-data.ts
-│       └── utils.ts
+│   │   ├── addToCart.spec.ts
+│   │   ├── checkout.spec.ts
+│   │   └── registration.spec.ts
+│   └── smoke/
+│       └── basicNavigation.spec.ts
 │
-└── utils/
-    ├── env.ts
-    └── logger.ts
+├── pages/
+│   ├── BasePage.ts
+│   ├── HomePage.ts
+│   ├── LoginPage.ts
+│   ├── ProductPage.ts
+│   ├── CartPage.ts
+│   ├── CheckoutPage.ts
+│   └── OrderConfirmationPage.ts
+│
+├── fixtures/
+│   ├── testSetup.ts
+│   └── authFixture.ts
+│
+├── utils/
+│   ├── helpers.ts
+│   ├── logger.ts
+│   ├── apiClient.ts
+│   └── wait.ts
+│
+├── test-data/
+│   ├── users.json
+│   ├── products.json
+│   └── checkoutData.json
+│
+├── reports/
+│   ├── html-report/
+│   └── traces/
+│
+├── .github/
+│   └── workflows/
+│       └── playwright-ci.yml
+│
+├── playwright.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
 **Tech stack:**<br>
