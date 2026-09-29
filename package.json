@@ -15,7 +15,9 @@
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.5.0",
     "allure-commandline": "^2.41.0",
-    "allure-playwright": "^3.9.0"
+    "allure-playwright": "^3.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9"
   },
   "dependencies": {
     "@axe-core/playwright": "^4.11.3",

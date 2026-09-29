@@ -13,7 +13,8 @@ export default defineConfig({
   expect: { timeout: 10000 },
   reporter: [
     ['allure-playwright'],
-    ['html']
+    ['html'],
+    ['json', { outputFile: 'test-results.json' }]
   ],
 
   use: {
