@@ -8,7 +8,7 @@
 A end‑to‑end UI automation framework built with Playwright and TypeScript.
 The project includes Page Object Model architecture, custom fixtures, and a automated CI pipeline using GitHub Actions.
 
-**Features:**<br>
+**Features:** <br>
 Playwright + TypeScript for browser automation<br>
 Page Object Model (POM) for clean separation of UI logic<br>
 Reusable utilities for logging, test data, and configuration<br>
@@ -17,7 +17,12 @@ HTML test reports automatically uploaded as artifacts<br>
 Cross‑browser support (Chromium, Firefox, WebKit)<br>
 Visual regression testing via Playwright snapshots<br>
 axe-core for accessibility scanning<br>
-Allure reporting added: https://aivaras-vilkas.github.io/playwright-demowebshop-ui/
+Allure reporting added: https://aivaras-vilkas.github.io/playwright-demowebshop-ui/<br>
+AI Report Generation (ran locally) using Ollama + Qwen<br>
+
+**Roadman for future features:** <br>
+AI Reporting. Mechanism for the failed test extraction<br>
+AI Reporting. Test trend analysis<br>
 
 **Project Structure:**
 ```
@@ -62,6 +67,11 @@ playwright-demowebshop-ui/
 │
 ├── .github/
 │   └── workflows/
+│       └── playwright-ci.yml
+│
+│── ai/
+│   ├── analyze_report.ts
+│   └── reports/ai-report.md
 │       └── playwright-ci.yml
 │
 ├── playwright.config.ts
