@@ -109,6 +109,15 @@ Run tests in Plawright UI:
 ```
 npx playwright test --ui
 ```
+**AI reporting**<br>
+Generate Playwright AI analysis report:
+```
+npx ts-node ai/analyze_report.ts
+```
+Generated report is saved to:
+```
+ai/reports/ai-report.md
+```
 
 **CI/CD pipeline - CI workflow is included in this project**<br>
 1. Snapshots are taken and updated:<br>
